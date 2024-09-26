@@ -22,136 +22,25 @@ header {
     margin-bottom: 20px;
 }
 
-header::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 5px;
-    background-color: #00ff00;
-    box-shadow: 0 5px 10px #00ff00, 0 10px 20px #00ff00;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-
-.left-header {
-    flex: 1;
-    text-align: left;
-}
-
-.quote {
-    color: #00ff00;
-    font-size: 18px;
-    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
-}
-
-.center-header {
-    flex: 2;
-    text-align: center;
-}
-
-.naam {
+.naam{
+    transition: color 0.3s ease, transform 0.3s ease;
     text-decoration: none;
     color: #00ff00;
-    font-size: 50px;
-    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
-    margin-bottom: 20px;
-    display: block;
+    text-shadow: 
+    0 0 5px #00ff00, 
+    0 0 10px #00ff00, 
+    0 0 15px #00ff00;
+}
+
+body{
+    background: rgb(49, 48, 47);
 }
 
 .naam:hover {
     text-decoration: none;
     color: red;
-    text-shadow: 0 0 5px red, 0 0 10px red;
-}
-
-.main-menu ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    font-size: small;
-}
-
-.main-menu ul li {
-    margin: 0 15px;
-}
-
-.main-menu ul li a {
-    text-decoration: none;
-    color: white;
-    padding: 14px 20px;
-    display: block;
-}
-
-.main-menu ul li a:hover {
-    background-color: #575757;
-}
-
-.right-header {
-    flex: 1;
-    text-align: right;
-}
-
-.right-header input {
-    padding: 5px;
-    border: 2px solid #00ff00;
-    border-radius: 5px;
-    background-color: #333;
-    color: white;
-    outline: none;
-    margin-bottom: 10px;
-}
-
-.right-header input::placeholder {
-    color: #00ff00;
-}
-
-.right-header input:focus {
-    border-color: #00cc00;
-}
-
-.social-icons {
-    margin-top: 10px;
-}
-
-.github-icon {
-    display: inline-block;
-    margin-right: 50px; /* Adjust spacing as needed */
-}
-
-.github-icon svg {
-    fill: #00ff00;
-    transition: fill 0.3s;
-}
-
-.github-icon:hover svg {
-    fill: #00cc00;
-}
-
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .left-header, .right-header {
-        margin-bottom: 10px;
-        text-align: center;
-    }
-
-    .naam {
-        font-size: 24px;
-        margin-bottom: 15px;
-    }
-
-    .main-menu ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .main-menu ul li {
-        margin: 10px 0;
-    }
+    text-shadow: 
+    0 0 5px red, 
+    0 0 10px red, 
+    0 0 15px red;
 }
