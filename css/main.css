@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Silkscreen", sans-serif;
+}
+
+
+header{
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+    background: rgb(49, 48, 47);
+    font-size: 30px;
+}
+
+.naam{
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    color: #00ff00;
+    text-shadow: 
+    0 0 5px #00ff00, 
+    0 0 10px #00ff00, 
+    0 0 15px #00ff00;
+}
+
+body{
+    background: rgb(49, 48, 47);
+}
+
+.naam:hover{
+    text-decoration: none;
+    color: red;
+    text-shadow: 
+    0 0 5px red, 
+    0 0 10px red, 
+    0 0 15px red;
+}
