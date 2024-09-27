@@ -11,6 +11,7 @@ body {
     background: rgb(49, 48, 47);
 }
 
+/* Header styling */
 header {
     display: flex;
     justify-content: space-between;
@@ -34,15 +35,19 @@ header::after {
     left: 0;
 }
 
+/* Left header (hamburger and quote) */
 .left-header {
     flex: 1;
-    text-align: left;
+    display: flex;
+    align-items: center;
 }
 
 .quote {
     color: #00ff00;
-    font-size: 18px;
+    font-size: 14px; /* Reduced size */
     text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+    margin-left: 50px; /* Increased space between hamburger and quote */
+    white-space: nowrap; /* Prevent quote from splitting into multiple lines */
 }
 
 .center-header {
@@ -60,22 +65,76 @@ header::after {
 }
 
 .naam:hover {
-    text-decoration: none;
     color: red;
     text-shadow: 0 0 5px red, 0 0 10px red;
 }
 
+.right-header {
+    flex: 1;
+    text-align: right;
+}
+
+/* Input styling */
+.right-header input {
+    padding: 5px;
+    border: 2px solid #00ff00;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    outline: none;
+}
+
+.right-header input::placeholder {
+    color: #00ff00;
+}
+
+.right-header input:focus {
+    border-color: #00cc00;
+}
+
+/* Hamburger menu styling */
+.hamburger {
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.3s ease-in-out; /* Smooth transition */
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: #00ff00;
+    transition: all 0.4s ease; /* Transition for animation */
+}
+
+/* Hamburger animation */
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Navigation Menu */
+.main-menu {
+    display: none; /* Hidden by default */
+    background-color: #333;
+    text-align: center;
+    padding: 10px;
+}
+
 .main-menu ul {
     list-style-type: none;
-    padding: 0;
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    font-size: small;
 }
 
 .main-menu ul li {
-    margin: 0 15px;
+    margin: 15px 0;
 }
 
 .main-menu ul li a {
@@ -89,47 +148,12 @@ header::after {
     background-color: #575757;
 }
 
-.right-header {
-    flex: 1;
-    text-align: right;
+/* Show class for hamburger toggle */
+.show {
+    display: block; /* Show the menu when 'show' class is added */
 }
 
-.right-header input {
-    padding: 5px;
-    border: 2px solid #00ff00;
-    border-radius: 5px;
-    background-color: #333;
-    color: white;
-    outline: none;
-    margin-bottom: 10px;
-}
-
-.right-header input::placeholder {
-    color: #00ff00;
-}
-
-.right-header input:focus {
-    border-color: #00cc00;
-}
-
-.social-icons {
-    margin-top: 10px;
-}
-
-.github-icon {
-    display: inline-block;
-    margin-right: px; /* Adjust spacing as needed */
-}
-
-.github-icon svg {
-    fill: #00ff00;
-    transition: fill 0.3s;
-}
-
-.github-icon:hover svg {
-    fill: #00cc00;
-}
-
+/* Media queries for mobile responsiveness */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
@@ -137,8 +161,8 @@ header::after {
     }
 
     .left-header, .right-header {
-        margin-bottom: 10px;
         text-align: center;
+        margin-bottom: 10px;
     }
 
     .naam {
