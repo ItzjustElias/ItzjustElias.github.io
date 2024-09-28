@@ -14,10 +14,10 @@
           <span></span>
           <span></span>
         </div>
-        <p class="quote">"It's not a bug, it's a feature"</p>
       </div>
       <div class="center-header">
         <a href="#" class="naam">Elias Bloem</a>
+        <p class="quote">"It's not a bug, it's a feature"</p>
       </div>
       <div class="right-header">
         <input type="text" placeholder="Search..." />
@@ -31,13 +31,46 @@
       </ul>
     </nav>
     <script>
-      document.getElementById("hamburger").addEventListener("click", function () {
-        var menu = document.getElementById("main-menu");
-        menu.classList.toggle("show");
-
-        // hamburger animatie
-        this.classList.toggle("active");
-      });
-    </script>
+        // Script to handle the hamburger click and toggle main-menu visibility
+        document.querySelector('.hamburger').addEventListener('click', function () {
+            this.classList.toggle('active');  // Toggle active class for hamburger animation
+            const menu = document.querySelector('.main-menu');
+            
+            // Toggle the visibility of the menu
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');  // Hide the menu
+                // Move it off-screen again
+                menu.style.top = `-${menu.offsetHeight}px`; // Adjust to the height of the menu
+            } else {
+                menu.classList.add('show');  // Show the menu
+                updateMenuPosition(); // Call this when showing the menu to adjust positioning
+            }
+        });
+        
+        // Dynamically set the position of the main-menu relative to the header
+        window.addEventListener('resize', updateMenuPosition);
+        window.addEventListener('load', updateMenuPosition); // Also set the position when the page is loaded
+        
+        function updateMenuPosition() {
+            const header = document.querySelector('header');
+            const menu = document.querySelector('.main-menu');
+            
+            const headerHeight = header.offsetHeight; // Get header height dynamically
+        
+            // Adjust the top position of the menu based on header's height
+            if (menu.classList.contains('show')) {
+                menu.style.top = `${headerHeight}px`;  // Align the menu right below the header
+                menu.style.opacity = 1;  // Make sure it's visible
+            } else {
+                menu.style.top = `-${menu.offsetHeight}px`; // Move it off-screen when hidden
+                menu.style.opacity = 0;  // Hide it when it's off-screen
+            }
+        }
+        
+        // Prevent text selection on the main-menu when shown
+        document.querySelector('.main-menu').addEventListener('mousedown', function (e) {
+            e.preventDefault();  // Prevent text selection when clicking on the menu
+        });
+    </script>        
   </body>
 </html>

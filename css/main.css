@@ -1,3 +1,4 @@
+/* General reset and styling */
 @import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
 
 * {
@@ -9,18 +10,19 @@
 
 body {
     background: rgb(49, 48, 47);
+    overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
-/* Header styling */
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 30px;
+    padding: 20px;
     background: rgb(49, 48, 47);
     position: relative;
     margin-bottom: 20px;
+    z-index: 1000; /* Ensure header stays on top */
 }
 
 header::after {
@@ -35,7 +37,6 @@ header::after {
     left: 0;
 }
 
-/* Left header (hamburger and quote) */
 .left-header {
     flex: 1;
     display: flex;
@@ -44,10 +45,11 @@ header::after {
 
 .quote {
     color: #00ff00;
-    font-size: 14px; /* Reduced size */
+    font-size: 12px; /* Smaller size for phones */
     text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
-    margin-left: 50px; /* Increased space between hamburger and quote */
-    white-space: nowrap; /* Prevent quote from splitting into multiple lines */
+    margin-left: 10px; /* Slightly smaller spacing for smaller screens */
+    white-space: nowrap; /* Prevent line breaks */
+    margin-top: 10px; /* Move quote slightly down */
 }
 
 .center-header {
@@ -58,9 +60,9 @@ header::after {
 .naam {
     text-decoration: none;
     color: #00ff00;
-    font-size: 50px;
+    font-size: 40px;
     text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
-    margin-bottom: 20px;
+    margin-bottom: 5px; /* Less margin between name and quote */
     display: block;
 }
 
@@ -74,7 +76,6 @@ header::after {
     text-align: right;
 }
 
-/* Input styling */
 .right-header input {
     padding: 5px;
     border: 2px solid #00ff00;
@@ -92,7 +93,6 @@ header::after {
     border-color: #00cc00;
 }
 
-/* Hamburger menu styling */
 .hamburger {
     display: inline-block;
     cursor: pointer;
@@ -108,7 +108,6 @@ header::after {
     transition: all 0.4s ease; /* Transition for animation */
 }
 
-/* Hamburger animation */
 .hamburger.active span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
@@ -121,12 +120,23 @@ header::after {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Navigation Menu */
+/* Main menu */
 .main-menu {
-    display: none; /* Hidden by default */
+    position: absolute;
+    top: -200px; /* Initially off the screen */
+    width: 100%;
     background-color: #333;
     text-align: center;
     padding: 10px;
+    opacity: 0; /* Initially invisible */
+    z-index: 999; /* Ensure it's below the header */
+    transition: top 0.5s ease, opacity 0.5s ease; /* Smooth transition */
+}
+
+.main-menu.show {
+    top: 80px; /* Align just under the header */
+    opacity: 1;
+    pointer-events: auto; /* Ensure it's interactive */
 }
 
 .main-menu ul {
@@ -134,48 +144,82 @@ header::after {
 }
 
 .main-menu ul li {
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 .main-menu ul li a {
     text-decoration: none;
     color: white;
-    padding: 14px 20px;
+    padding: 10px 20px;
     display: block;
+    pointer-events: auto;
 }
 
 .main-menu ul li a:hover {
     background-color: #575757;
 }
 
-/* Show class for hamburger toggle */
-.show {
-    display: block; /* Show the menu when 'show' class is added */
-}
-
-/* Media queries for mobile responsiveness */
+/* Media Queries for Mobile Devices */
 @media (max-width: 768px) {
     header {
         flex-direction: column;
         align-items: center;
+        padding: 15px;
     }
 
-    .left-header, .right-header {
+    .left-header {
+        justify-content: flex-start; /* Ensure left alignment of the hamburger */
+    }
+
+    .hamburger {
+        margin-right: auto; /* Move hamburger to the left */
+    }
+
+    .center-header {
+        margin-bottom: 10px; /* Add spacing between the name and hamburger */
+    }
+
+    .quote {
+        font-size: 10px; /* Smaller font for quote */
+        margin-left: 0;
         text-align: center;
-        margin-bottom: 10px;
+        margin-top: 5px; /* Ensure it's right below the name */
+    }
+
+    .naam {
+        font-size: 28px;
+        margin-bottom: 0; /* Quote will be directly below the name */
+    }
+
+    .main-menu.show {
+        top: 130px; /* Adjust to sit just below the header on mobile */
+        opacity: 1;
+    }
+
+    .right-header input {
+        display: none; /* Hide search bar on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
     }
 
     .naam {
         font-size: 24px;
-        margin-bottom: 15px;
     }
 
-    .main-menu ul {
-        flex-direction: column;
-        align-items: center;
+    .quote {
+        font-size: 9px; /* Smaller font for small screens */
+        margin-top: 2px;
     }
 
-    .main-menu ul li {
-        margin: 10px 0;
+    .hamburger {
+        margin-right: auto; /* Left-align hamburger */
+    }
+
+    .main-menu.show {
+        top: 140px;
     }
 }
