@@ -24,7 +24,7 @@
         <input id="text-input-search" type="text" placeholder="Search..." />
       </div>
     </header>
-    
+
     <nav class="main-menu" id="main-menu">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -36,99 +36,79 @@
 
     <section class="projects-section">
       <h1>MY PROJECTS</h1>
-      <div class="project-list">
-        <div class="project-item">
-          <div class="circle"></div>
-          <div class="line"></div>
-          <a href="#" class="project-name" data-description="Description for Project 1: This project involves...">Discord Commands (Node.js)</a>
-          <div class="project-description">
-            <strong>Link:</strong> <a href="https://github.com/ItzjustElias/discord-bot-commands" target="_blank">View on GitHub</a>
-          </div>
+      <div class="project-cards">
+        <div class="project-card">
+          <h2 class="project-title">Discord Commands</h2>
+          <p class="project-lang">Language: Node.js</p>
+          <p class="project-desc">A set of useful commands for Discord bots built using Node.js.</p>
+          <a href="https://github.com/ItzjustElias/discord-bot-commands" target="_blank" class="arrow-link">
+            ↗
+          </a>
         </div>
-        <div class="project-item">
-          <div class="circle"></div>
-          <div class="line"></div>
-          <a href="#" class="project-name" data-description="Description for Project 2: This project involves...">Your Project 2</a>
-          <div class="project-description">
-            <strong>Link:</strong> <a href="https://github.com/YourUsername/YourProject2" target="_blank">View on GitHub</a>
-          </div>
+
+        <div class="project-card">
+          <h2 class="project-title">Your Project 2</h2>
+          <p class="project-lang">Language: Python</p>
+          <p class="project-desc">This project does something cool with Python.</p>
+          <a href="https://github.com/YourUsername/YourProject2" target="_blank" class="arrow-link">
+            ↗
+          </a>
         </div>
-        <div class="project-item">
-          <div class="circle"></div>
-          <div class="line"></div>
-          <a href="#" class="project-name" data-description="Description for Project 3: This project involves...">Your Project 3</a>
-          <div class="project-description">
-            <strong>Link:</strong> <a href="https://github.com/YourUsername/YourProject3" target="_blank">View on GitHub</a>
-          </div>
+
+        <div class="project-card">
+          <h2 class="project-title">Your Project 3</h2>
+          <p class="project-lang">Language: JavaScript</p>
+          <p class="project-desc">A dynamic web project using JavaScript.</p>
+          <a href="https://github.com/YourUsername/YourProject3" target="_blank" class="arrow-link">
+            ↗
+          </a>
         </div>
       </div>
     </section>
 
+    <footer class="eliasfooter">
+      <p>Made by Elias™ 2024</p>
+    </footer>
+
     <script>
-      // Script + informatie door en met Chat Gpt, de firma dankt u!
       document
         .querySelector(".hamburger")
         .addEventListener("click", function () {
-          this.classList.toggle("active"); // Toggle active class for hamburger animation
+          this.classList.toggle("active");
           const menu = document.querySelector(".main-menu");
 
-          // Toggle the visibility of the menu
           if (menu.classList.contains("show")) {
-            menu.classList.remove("show"); // Hide the menu
-            // Move it off-screen again
-            menu.style.top = `-${menu.offsetHeight}px`; // Adjust to the height of the menu
+            menu.classList.remove("show");
+            menu.style.top = `-${menu.offsetHeight}px`;
           } else {
-            menu.classList.add("show"); // Show the menu
-            updateMenuPosition(); // Call this when showing the menu to adjust positioning
+            menu.classList.add("show");
+            updateMenuPosition();
           }
         });
 
-      // Dynamically set the position of the main-menu relative to the header
       window.addEventListener("resize", updateMenuPosition);
-      window.addEventListener("load", updateMenuPosition); // Also set the position when the page is loaded
+      window.addEventListener("load", updateMenuPosition);
 
       function updateMenuPosition() {
         const header = document.querySelector("header");
         const menu = document.querySelector(".main-menu");
 
-        const headerHeight = header.offsetHeight; // Get header height dynamically
+        const headerHeight = header.offsetHeight;
 
-        // Adjust the top position of the menu based on header's height
         if (menu.classList.contains("show")) {
-          menu.style.top = `${headerHeight}px`; // Align the menu right below the header
-          menu.style.opacity = 1; // Make sure it's visible
+          menu.style.top = `${headerHeight}px`;
+          menu.style.opacity = 1;
         } else {
-          menu.style.top = `-${menu.offsetHeight}px`; // Move it off-screen when hidden
-          menu.style.opacity = 0; // Hide it when it's off-screen
+          menu.style.top = `-${menu.offsetHeight}px`;
+          menu.style.opacity = 0;
         }
       }
 
-      // input searchbar test
-      document.getElementById("")
-
-      // Prevent text selection on the main-menu when shown
       document
         .querySelector(".main-menu")
         .addEventListener("mousedown", function (e) {
-          e.preventDefault(); // Prevent text selection when clicking on the menu
+          e.preventDefault();
         });
-
-      // Handle project name click
-      const projectNames = document.querySelectorAll(".project-name");
-
-      projectNames.forEach((project) => {
-        project.addEventListener("click", function (e) {
-          e.preventDefault(); // Prevent default link behavior
-          const description = this.nextElementSibling;
-
-          // Toggle the open class for the project description
-          description.classList.toggle("open");
-        });
-      });
     </script>
-
-    <footer class="eliasfooter">
-      <p>Made by Elias™ 2024</p>
-    </footer>
   </body>
 </html>
