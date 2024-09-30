@@ -1,225 +1,402 @@
-/* General reset and styling */
-@import url('https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap");
 
+/* Global Styles */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Silkscreen", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Silkscreen", sans-serif;
 }
 
 body {
-    background: rgb(49, 48, 47);
-    overflow-x: hidden; /* Prevent horizontal overflow */
+  background: rgb(49, 48, 47);
+  overflow-x: hidden;
 }
 
+/* Header Styles */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-    background: rgb(49, 48, 47);
-    position: relative;
-    margin-bottom: 20px;
-    z-index: 1000; /* Ensure header stays on top */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background: rgb(49, 48, 47);
+  position: relative;
+  margin-bottom: 20px;
+  z-index: 1000;
 }
 
 header::after {
-    content: '';
-    display: block;
-    width: 100%;
-    height: 5px;
-    background-color: #00ff00;
-    box-shadow: 0 5px 10px #00ff00, 0 10px 20px #00ff00;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  content: "";
+  display: block;
+  width: 100%;
+  height: 5px;
+  background-color: #00ff00;
+  box-shadow: 0 5px 10px #00ff00, 0 10px 20px #00ff00;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .left-header {
-    flex: 1;
-    display: flex;
-    align-items: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .quote {
-    color: #00ff00;
-    font-size: 12px; /* Smaller size for phones */
-    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
-    margin-left: 10px; /* Slightly smaller spacing for smaller screens */
-    white-space: nowrap; /* Prevent line breaks */
-    margin-top: 10px; /* Move quote slightly down */
+  color: #00ff00;
+  font-size: 12px;
+  text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+  margin-left: 10px;
+  white-space: nowrap;
+  margin-top: 10px;
 }
 
 .center-header {
-    flex: 2;
-    text-align: center;
+  flex: 2;
+  align-items: center;
+  text-align: center;
 }
 
 .naam {
-    text-decoration: none;
-    color: #00ff00;
-    font-size: 40px;
-    text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
-    margin-bottom: 5px; /* Less margin between name and quote */
-    display: block;
+  text-decoration: none;
+  color: #00ff00;
+  font-size: 40px;
+  margin-bottom: 5px;
+  display: block;
 }
 
 .naam:hover {
-    color: red;
-    text-shadow: 0 0 5px red, 0 0 10px red;
+  color: red;
 }
 
 .right-header {
-    flex: 1;
-    text-align: right;
+  flex: 1;
+  text-align: right;
 }
 
 .right-header input {
-    padding: 5px;
-    border: 2px solid #00ff00;
-    border-radius: 5px;
-    background-color: #333;
-    color: white;
-    outline: none;
+  padding: 5px;
+  border: 2px solid #00ff00;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  outline: none;
 }
 
 .right-header input::placeholder {
-    color: #00ff00;
+  color: #00ff00;
 }
 
 .right-header input:focus {
-    border-color: #00cc00;
+  border-color: #00cc00;
 }
 
 .hamburger {
-    display: inline-block;
-    cursor: pointer;
-    transition: 0.3s ease-in-out; /* Smooth transition */
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
 }
 
 .hamburger span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px 0;
-    background-color: #00ff00;
-    transition: all 0.4s ease; /* Transition for animation */
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background-color: #00ff00;
+  transition: all 0.4s ease;
 }
 
 .hamburger.active span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+  transform: translateY(8px) rotate(45deg);
 }
 
 .hamburger.active span:nth-child(2) {
-    opacity: 0;
+  opacity: 0;
 }
 
 .hamburger.active span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Main menu */
+/* Menu Styles */
 .main-menu {
-    position: absolute;
-    top: -200px; /* Initially off the screen */
-    width: 100%;
-    background-color: #333;
-    text-align: center;
-    padding: 10px;
-    opacity: 0; /* Initially invisible */
-    z-index: 999; /* Ensure it's below the header */
-    transition: top 0.5s ease, opacity 0.5s ease; /* Smooth transition */
+  position: absolute;
+  top: -200px;
+  width: 100%;
+  background-color: #333;
+  text-align: center;
+  padding: 10px;
+  opacity: 0;
+  z-index: 999;
+  transition: top 0.5s ease, opacity 0.5s ease;
 }
 
 .main-menu.show {
-    top: 80px; /* Align just under the header */
-    opacity: 1;
-    pointer-events: auto; /* Ensure it's interactive */
+  top: 80px;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .main-menu ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .main-menu ul li {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .main-menu ul li a {
-    text-decoration: none;
-    color: white;
-    padding: 10px 20px;
-    display: block;
-    pointer-events: auto;
+  text-decoration: none;
+  color: white;
+  padding: 10px 20px;
+  display: block;
+  pointer-events: auto;
 }
 
 .main-menu ul li a:hover {
-    background-color: #575757;
+  background-color: #575757;
 }
 
-/* Media Queries for Mobile Devices */
+/* Text Section Styles */
+.text-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(26, 26, 25);
+  color: #00ff00;
+  text-align: left;
+  padding: 100px 100px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.text-section img {
+  max-width: 30%;
+  height: auto;
+  box-shadow: 0 0 20px #00ff00;
+}
+
+.text-section .content-wrapper {
+  max-width: 65%;
+  flex: 1;
+}
+
+.text-section h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.text-section p {
+  font-size: 18px;
+  max-width: 800px;
+}
+
+/* Footer Styles */
+.eliasfooter {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(49, 48, 47);
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 -5px 10px #00ff00;
+}
+
+.eliasfooter p {
+  color: #00ff00;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Projects Section Styles */
+.projects-section {
+  padding: 20px;
+  text-align: center;
+}
+
+.projects-section h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #00ff00;
+}
+
+.project-list {
+  position: relative;
+  align-items: center;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.project-description {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+  margin-left: 35px;
+  color: #00ff00;
+}
+
+.project-description.open {
+  max-height: 100px;
+  opacity: 1;
+}
+
+.project-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+.project-item:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.project-item:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.project-item:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.circle {
+  width: 15px;
+  height: 15px;
+  background-color: #00ff00;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.line {
+  width: 2px;
+  height: 40px;
+  background-color: #00ff00;
+  position: absolute;
+  top: 15px;
+  left: 7px;
+}
+
+.project-item a {
+  margin-left: 15px;
+  color: #00ff00;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.project-item a:hover {
+  text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-        padding: 15px;
-    }
+  header {
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+  }
 
-    .left-header {
-        justify-content: flex-start; /* Ensure left alignment of the hamburger */
-    }
+  .left-header {
+    justify-content: flex-start;
+  }
 
-    .hamburger {
-        margin-right: auto; /* Move hamburger to the left */
-    }
+  .hamburger {
+    margin-right: auto;
+  }
 
-    .center-header {
-        margin-bottom: 10px; /* Add spacing between the name and hamburger */
-    }
+  .center-header {
+    margin-bottom: 10px;
+  }
 
-    .quote {
-        font-size: 10px; /* Smaller font for quote */
-        margin-left: 0;
-        text-align: center;
-        margin-top: 5px; /* Ensure it's right below the name */
-    }
+  .quote {
+    font-size: 10px;
+    margin-left: 0;
+    text-align: center;
+    margin-top: 5px;
+  }
 
-    .naam {
-        font-size: 28px;
-        margin-bottom: 0; /* Quote will be directly below the name */
-    }
+  .naam {
+    font-size: 28px;
+    margin-bottom: 0;
+  }
 
-    .main-menu.show {
-        top: 130px; /* Adjust to sit just below the header on mobile */
-        opacity: 1;
-    }
+  .main-menu.show {
+    top: 130px;
+    opacity: 1;
+  }
 
-    .right-header input {
-        display: none; /* Hide search bar on mobile */
-    }
+  .right-header input {
+    display: none;
+  }
+
+  .text-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .text-section img {
+    max-width: 80%;
+    margin: 0 auto 20px;
+  }
+
+  .text-section .content-wrapper {
+    max-width: 100%;
+  }
+
+  .text-section h1 {
+    font-size: 36px;
+  }
+
+  .text-section p {
+    font-size: 16px;
+  }
+
+  .line {
+    /*will add something idk*/
+  }
 }
 
 @media (max-width: 480px) {
-    header {
-        padding: 10px;
-    }
+  header {
+    padding: 10px;
+  }
 
-    .naam {
-        font-size: 24px;
-    }
+  .naam {
+    font-size: 24px;
+  }
 
-    .quote {
-        font-size: 9px; /* Smaller font for small screens */
-        margin-top: 2px;
-    }
+  .quote {
+    font-size: 9px;
+    margin-top: 2px;
+  }
 
-    .hamburger {
-        margin-right: auto; /* Left-align hamburger */
-    }
+  .text-section h1 {
+    font-size: 28px;
+  }
 
-    .main-menu.show {
-        top: 140px;
-    }
+  .text-section p {
+    font-size: 14px;
+  }
+
+  .project-item a {
+    font-size: 16px;
+  }
 }
