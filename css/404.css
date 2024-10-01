@@ -1,0 +1,25 @@
+main {
+    display: flex;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .header404 {
+    color: #00ff00;
+    font-size: 48px;
+  }
+  
+  .content404 {
+    text-align: center;
+  }
+
+  main a {
+    color: whitesmoke;
+    text-decoration: none;
+  }
+  
+  .content-404 p {
+    color: #00ff00;
+  }
