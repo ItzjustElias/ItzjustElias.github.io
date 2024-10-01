@@ -54,7 +54,7 @@ header::after {
 }
 
 .center-header {
-  flex: 2;
+  flex: 1;
   align-items: center;
   text-align: center;
 }
@@ -237,7 +237,7 @@ header::after {
   color: #00ff00;
   border: 1px solid #00ff00;
   padding: 20px;
-  width: 250px;
+  width: 30%;
   position: relative;
   box-shadow: 0 0 10px #00ff00;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -342,7 +342,6 @@ header::after {
 
   .project-card {
     width: 90%;
-    max-width: 400px;
   }
 
   .line {
