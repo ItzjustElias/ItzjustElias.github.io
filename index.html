@@ -22,7 +22,9 @@
         <p class="quote">"It's not a bug, it's a feature"</p>
       </div>
       <div class="right-header">
-        <input type="text" placeholder="Search..." />
+        <form>
+          <input id="searchbarinput" type="text" placeholder="Search..." />
+        </form>
       </div>
     </header>
     <nav class="main-menu" id="main-menu">
@@ -80,6 +82,8 @@
           menu.style.opacity = 0; // Hide it when it's off-screen
         }
       }
+
+      document.getElementById("searchbarinput") 
 
       // Prevent text selection on the main-menu when shown
       document
