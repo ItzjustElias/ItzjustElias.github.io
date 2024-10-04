@@ -198,7 +198,6 @@ header::after {
 
 /* Footer Styles */
 .eliasfooter {
-  position: fixed;
   bottom: 0;
   width: 100%;
   background-color: rgb(49, 48, 47);
