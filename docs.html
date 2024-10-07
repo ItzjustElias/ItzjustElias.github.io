@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light only" />
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
     <link rel="stylesheet" href="./css/error.css" />
-    <link rel="stylesheet" href="./css/404.css" />
-    <title>404 not Found!</title>
+    <link rel="stylesheet" href="./css/404.css">
+    <title>EB Docs</title>
   </head>
   <body>
     <header>
@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="center-header">
-        <a href="#" class="naam">Elias Bloem</a>
+        <a href="index.html" class="naam">Elias Bloem</a>
         <p class="quote">"It's not a bug, it's a feature"</p>
       </div>
       <div class="right-header">
@@ -32,25 +32,26 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="projects.html">Projects</a></li>
         <li><a href="docs.html">Docs</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="index.html/#about">About</a></li>
       </ul>
     </nav>
 
     <main class="404-Page">
-      <h4 class="header404">404</h4>
-      <div class="content-404">
-        <p>UH OH, You're Lost! We couldn't find the page you are looking for.</p>
-      </div>
-        <p>
-          <a href="index.html">Check our home page</a>
-        </p>
-    </main>
+        <h4 class="header404">202</h4>
+        <div class="content-404">
+          <p>The request has been accepted for processing, but the processing has not been completed (WIP).</p>
+        </div>
+          <p>
+            <a href="index.html">Check our home page</a>
+          </p>
+      </main>
 
     <footer class="eliasfooter">
       <p>Made by Elias™ 2024</p>
     </footer>
 
     <script>
+      // Toggle hamburger menu functionality
       document
         .querySelector(".hamburger")
         .addEventListener("click", function () {
@@ -89,6 +90,32 @@
         .addEventListener("mousedown", function (e) {
           e.preventDefault();
         });
+
+      // Search bar functionality
+      const searchInput = document.getElementById("text-input-search");
+      const projectCards = document.querySelectorAll(".project-card");
+
+      // Add an event listener to the search input
+      searchInput.addEventListener("input", function () {
+        const searchTerm = searchInput.value.toLowerCase(); // Get the search term, convert to lowercase
+
+        // Loop through each project card to check if it matches the search term
+        projectCards.forEach(function (card) {
+          const title = card
+            .querySelector(".project-title")
+            .textContent.toLowerCase();
+          const description = card
+            .querySelector(".project-desc")
+            .textContent.toLowerCase();
+
+          // Check if title or description includes the search term
+          if (title.includes(searchTerm) || description.includes(searchTerm)) {
+            card.style.display = "block"; // Show matching project cards
+          } else {
+            card.style.display = "none"; // Hide non-matching project cards
+          }
+        });
+      });
     </script>
   </body>
 </html>
