@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="./css/main.css">
+    <title>EB Docs</title>
+  </head>
+  <body>
+    <header>
+      <div class="left-header">
+        <div class="hamburger" id="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="center-header">
+        <a href="index.html" class="naam">Elias Bloem</a>
+        <p class="quote">"It's not a bug, it's a feature"</p>
+      </div>
+      <div class="right-header">
+        <input id="text-input-search" type="text" placeholder="Search..." />
+      </div>
+    </header>
+
+    <nav class="main-menu" id="main-menu">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="docs.html">Docs</a></li>
+        <li><a href="index.html/#about">About</a></li>
+      </ul>
+    </nav>
+
+    <main class="404-Page">
+        <h4 class="header404">202</h4>
+        <div class="content-404">
+          <p>The request has been accepted for processing, but the processing has not been completed (WIP).</p>
+        </div>
+          <p>
+            <a href="index.html">Check our home page</a>
+          </p>
+      </main>
+
+    <footer class="eliasfooter">
+      <p>Made by Elias™ 2024</p>
+    </footer>
+
+    <script>
+      // Toggle hamburger menu functionality
+      document
+        .querySelector(".hamburger")
+        .addEventListener("click", function () {
+          this.classList.toggle("active");
+          const menu = document.querySelector(".main-menu");
+
+          if (menu.classList.contains("show")) {
+            menu.classList.remove("show");
+            menu.style.top = `-${menu.offsetHeight}px`;
+          } else {
+            menu.classList.add("show");
+            updateMenuPosition();
+          }
+        });
+
+      window.addEventListener("resize", updateMenuPosition);
+      window.addEventListener("load", updateMenuPosition);
+
+      function updateMenuPosition() {
+        const header = document.querySelector("header");
+        const menu = document.querySelector(".main-menu");
+
+        const headerHeight = header.offsetHeight;
+
+        if (menu.classList.contains("show")) {
+          menu.style.top = `${headerHeight}px`;
+          menu.style.opacity = 1;
+        } else {
+          menu.style.top = `-${menu.offsetHeight}px`;
+          menu.style.opacity = 0;
+        }
+      }
+
+      document
+        .querySelector(".main-menu")
+        .addEventListener("mousedown", function (e) {
+          e.preventDefault();
+        });
+
+      // Search bar functionality
+      const searchInput = document.getElementById("text-input-search");
+      const projectCards = document.querySelectorAll(".project-card");
+
+      // Add an event listener to the search input
+      searchInput.addEventListener("input", function () {
+        const searchTerm = searchInput.value.toLowerCase(); // Get the search term, convert to lowercase
+
+        // Loop through each project card to check if it matches the search term
+        projectCards.forEach(function (card) {
+          const title = card
+            .querySelector(".project-title")
+            .textContent.toLowerCase();
+          const description = card
+            .querySelector(".project-desc")
+            .textContent.toLowerCase();
+
+          // Check if title or description includes the search term
+          if (title.includes(searchTerm) || description.includes(searchTerm)) {
+            card.style.display = "block"; // Show matching project cards
+          } else {
+            card.style.display = "none"; // Hide non-matching project cards
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

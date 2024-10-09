@@ -13,7 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Header Styles */
 header {
   display: flex;
   justify-content: space-between;
@@ -94,7 +93,6 @@ header::after {
 }
 
 .hamburger {
-  display: inline-block;
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
@@ -167,33 +165,29 @@ header::after {
   background-color: rgb(26, 26, 25);
   color: #00ff00;
   text-align: left;
-  padding: 100px 100px;
+  padding: 50px 10px; /* Adjust padding for better responsiveness */
   flex-wrap: wrap;
   gap: 20px;
 }
 
 .text-section img {
-  max-width: 30%;
+  max-width: 100%;
   height: auto;
   box-shadow: 0 0 20px #00ff00;
 }
 
 .text-section .content-wrapper {
-  max-width: 65%;
   flex: 1;
 }
 
 .text-section h1 {
-  font-size: 48px;
+  font-size: 36px; /* Adjusted for smaller screens */
   margin-bottom: 20px;
-  text-align: left;
-  text-decoration: none;
 }
 
 .text-section p {
-  font-size: 18px;
-  max-width: 800px;
-  text-align: left;
+  font-size: 16px;
+  max-width: 100%;
 }
 
 /* Footer Styles */
@@ -224,6 +218,18 @@ header::after {
   color: #00ff00;
 }
 
+.projects-section p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #00ff00;
+}
+
+.projects-p-section p {
+  font-size: 20px;
+  margin-bottom: 30px;
+  color: #0ce40c;
+}
+
 .project-cards {
   display: flex;
   flex-wrap: wrap;
@@ -236,7 +242,8 @@ header::after {
   color: #00ff00;
   border: 1px solid #00ff00;
   padding: 20px;
-  width: 30%;
+  width: 100%; /* Set to 100% width to adjust to smaller screens */
+  max-width: 400px; /* Limit width for larger screens */
   position: relative;
   box-shadow: 0 0 10px #00ff00;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -252,7 +259,8 @@ header::after {
   margin-bottom: 10px;
 }
 
-.project-lang, .project-desc {
+.project-lang,
+.project-desc {
   font-size: 16px;
   margin-bottom: 10px;
 }
@@ -272,7 +280,9 @@ header::after {
 }
 
 /* Media Queries */
-@media (max-width: 768px) {
+
+/* Tablets */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
   header {
     flex-direction: column;
     align-items: center;
@@ -284,7 +294,7 @@ header::after {
   }
 
   .hamburger {
-    margin-right: auto;
+    display: inline-block; /* Display hamburger on tablet */
   }
 
   .center-header {
@@ -315,6 +325,7 @@ header::after {
   .text-section {
     flex-direction: column;
     text-align: center;
+    padding: 30px;
   }
 
   .text-section img {
@@ -342,15 +353,17 @@ header::after {
   .project-card {
     width: 90%;
   }
-
-  .line {
-    /*will add something idk*/
-  }
 }
 
-@media (max-width: 480px) {
+/* Small Devices (iPhone, etc.) */
+@media (max-width: 414px) {
   header {
     padding: 10px;
+    flex-direction: column;
+  }
+
+  .hamburger {
+    display: inline-block; /* Show hamburger for small devices */
   }
 
   .naam {
@@ -362,6 +375,12 @@ header::after {
     margin-top: 2px;
   }
 
+  .text-section {
+    padding: 20px;
+    text-align: center;
+    flex-direction: column;
+  }
+
   .text-section h1 {
     font-size: 28px;
   }
@@ -370,7 +389,17 @@ header::after {
     font-size: 14px;
   }
 
-  .project-item a {
-    font-size: 16px;
+  .project-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .right-header input {
+    display: none;
+  }
+
+  .project-card {
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
