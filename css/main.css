@@ -394,10 +394,6 @@ header::after {
     align-items: center;
   }
 
-  .right-header input {
-    display: none;
-  }
-
   .project-card {
     width: 100%;
     margin-bottom: 20px;
