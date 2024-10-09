@@ -318,10 +318,6 @@ header::after {
     opacity: 1;
   }
 
-  .right-header input {
-    display: none;
-  }
-
   .text-section {
     flex-direction: column;
     text-align: center;
